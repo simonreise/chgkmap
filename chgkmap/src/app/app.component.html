@@ -1,0 +1,44 @@
+<div> 
+  <mat-toolbar class="mat-elevation-z6" color="primary">
+    <div fxShow="true" fxHide.gt-sm="true">
+      <button mat-icon-button (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+    </div>
+
+    <a mat-button class="companyName" routerLink="/">
+	  <img src="/assets/logo.png" height = 32 width = 32 hspace = 8>
+      <span>Карта турниров ЧГК</span>
+    </a>
+    <span class="example-spacer"></span>
+    <div fxShow="true" fxHide.lt-md="true">
+      <a mat-button routerLink="/about-us">О нас</a>
+      <a mat-button routerLink="/projects">Другие проекты</a>
+	  <span class="example-spacer"></span>
+	  <a mat-button href="http://rating.chgk.info/" target="_blank">
+	    <span>Сайт рейтинга</span>
+	    <mat-icon>open_in_new</mat-icon>
+	  </a>
+	</div>
+
+  </mat-toolbar>
+  <mat-sidenav-container fxFlexFill class="sidenav-container">
+
+    <mat-sidenav color="primary" #sidenav fxLayout="column" mode="over"  opened="false" fxHide.gt-sm="true">
+      <div fxLayout="column">
+        <a mat-button routerLink="/about-us">О нас</a>
+        <a mat-button routerLink="/projects">Другие проекты</a>
+		<a mat-button href="http://rating.chgk.info/" target="_blank">
+	      <span>Сайт рейтинга</span>
+	      <mat-icon>open_in_new</mat-icon>
+	    </a>
+      </div>
+    </mat-sidenav>
+    <mat-sidenav-content fxFlexFill>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
+
+
+
