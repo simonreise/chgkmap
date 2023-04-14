@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 import {
   MAT_MOMENT_DATE_FORMATS,
   MomentDateAdapter,
@@ -45,7 +45,8 @@ export class MainComponent implements OnInit {
     });
 	
 	//Получаем geojson через api
-	this.http.get('http://localhost:3000/api/v1/map').subscribe((data:any) => {
+	var apiurl = "http://localhost:3000/api/v1/map?start=" + encodeURIComponent(Date.now())
+	this.http.get(apiurl).subscribe((data:any) => {
 	  this.geojsonFeature = data;
 	  this.geojsonLayer = L.geoJSON(this.geojsonFeature, {
         onEachFeature: onEachFeature
@@ -69,9 +70,9 @@ export class MainComponent implements OnInit {
   
   ngOnInit(): void {
   }
-  range = new FormGroup({
-    start: new FormControl(),
-    end: new FormControl()
+  range = new UntypedFormGroup({
+    start: new UntypedFormControl(),
+    end: new UntypedFormControl()
   });
   
   ngAfterViewInit(): void {
@@ -83,7 +84,7 @@ export class MainComponent implements OnInit {
   {
 	this.map.removeLayer(this.geojsonLayer);
 	this.geojsonLayer.clearLayers();
-	var apiurl = "http://localhost:3000/api/v1/map?start=" + encodeURIComponent(this.range.value.start) + "&end=" + encodeURIComponent(this.range.value.end);
+	var apiurl = "http://localhost:3000/api/v1/map?start=" + encodeURIComponent(this.range.value.start.getTime()) + "&end=" + encodeURIComponent(this.range.value.end.getTime());
   	this.http.get(apiurl).subscribe((data:any) => {
 	  this.geojsonFeature = data;
 	  this.geojsonLayer = L.geoJSON(this.geojsonFeature, {

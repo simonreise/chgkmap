@@ -104,5 +104,7 @@
       }
     }
   },
-  "defaultProject": "chgkmap"
+  "cli": {
+    "analytics": "3d8f7b46-1cba-4930-a016-b71fa90b8bdd"
+  }
 }
