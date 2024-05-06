@@ -70,10 +70,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "chgkmap:build:production"
+              "buildTarget": "chgkmap:build:production"
             },
             "development": {
-              "browserTarget": "chgkmap:build:development"
+              "buildTarget": "chgkmap:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -81,7 +81,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "chgkmap:build"
+            "buildTarget": "chgkmap:build"
           }
         },
         "test": {
